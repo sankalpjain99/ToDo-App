@@ -1,7 +1,6 @@
 document.getElementById("login-btn").addEventListener("click" , () => {
     var email = document.getElementById("email").value;
     var password = document.getElementById("pass").value;
-    console.log(email+" "+password);
     fetch("https://sankalp-task-manager-api.herokuapp.com/users/login",{
         method: 'POST',
         headers: {
