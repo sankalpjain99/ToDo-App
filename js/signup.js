@@ -11,7 +11,8 @@ document.getElementById("signup-btn").addEventListener("click", () => {
     }).then((res) => res.json())
     .then((data) => {
         console.log(data);
-        window.localStorage.setItem('token', data.token)
+        window.localStorage.setItem('token', data.token);
+        window.location.href = "./tasks.html";
     })
     .catch((err) => console.log(err))
 })
