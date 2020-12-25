@@ -48,8 +48,25 @@ logoutUser = () => {
         .catch((err) => console.log(err))
 }
 
+deleteUser = () => {
+    fetch("https://sankalp-task-manager-api.herokuapp.com/users/me",{
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+            }
+        }).then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            window.localStorage.removeItem('token');
+            window.location.href = "../index.html";
+        })
+        .catch((err) => console.log(err))
+}
+
 window.onload = () => {
     updateName();
     loadTasks();    
     document.getElementById("logout").addEventListener("click", logoutUser);
+    document.getElementById("delete-usr").addEventListener("click", deleteUser);
 }
