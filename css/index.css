@@ -1,0 +1,142 @@
+html, body{
+    height: 100%;
+}
+
+body{
+    font-family: 'Spartan', sans-serif;
+    width: 100%;
+    background: #DCE35B;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #45B649, #DCE35B);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #45B649, #DCE35B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.main-box{
+    width: 60%;
+    /* height: 60%; */
+    background-color: white;
+    border-radius: 15px;
+    padding: 7% 1%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.left-box{
+    position: relative;
+}
+
+.login-svg{
+    width: 80%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:  auto;
+}
+
+.right-box-cont{
+    display: flex;
+}
+
+.right-box{
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    align-self: center;
+}
+
+.right-box h1{
+    margin-bottom: 10%;
+    font-size: 2rem;
+}
+
+.right-box input{
+    width: 70%;
+    font-size: 1rem;
+    border: none;
+    margin-bottom: 40px;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+.right-box input:focus{
+    outline: none;
+}
+
+.right-box input:active{
+    outline: none;
+    border: none;
+}
+
+.right-box button{
+    width: 70%;
+    margin-bottom: 20px;
+    border: none;
+    padding: 10px 5px;
+    border-radius: 10px;
+}
+
+.right-box button:hover{
+    background-color: rgba(128, 128, 128, 0.205);
+}
+
+.right-box button:focus{
+    outline: none;
+}
+
+#login-btn{
+    background-color: rgba(43, 158, 43, 0.781);
+    color: white;
+}
+
+#login-btn:hover{
+    background-color:  rgba(43, 158, 43, 0.616);
+}
+
+@media (max-width: 1200px){
+
+    html{
+        font-size: 18px;
+    }
+
+    .left-box img{
+        height: 100%;
+        margin-top: 5%;
+    }
+
+    .right-box input, .right-box button{
+        width: 80%;
+    }
+
+}
+
+@media (max-width: 766px){
+
+    html{
+        font-size: 10px;
+    }
+
+    .main-box{
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .right-box{
+        padding: 0;
+    }
+
+    .right-box h1{
+        margin: 10% 0 20%;
+    }
+
+    .right-box input, .right-box button{
+        width: 90%;
+    }
+}
