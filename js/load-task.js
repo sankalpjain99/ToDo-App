@@ -34,8 +34,8 @@ loadTasks = () => {
     .catch((err) => console.log(err))
 }
 
-logoutUser = () => {
-    fetch("https://sankalp-task-manager-api.herokuapp.com/users/logout",{
+logoutUser = (addon="") => {
+    fetch("https://sankalp-task-manager-api.herokuapp.com/users/logout"+addon,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -91,6 +91,9 @@ window.onload = () => {
     updateName();
     loadTasks();    
     document.getElementById("logout").addEventListener("click", logoutUser);
+    document.getElementById("logout-all").addEventListener("click", ()=>{
+        logoutUser("All");
+    });
     document.getElementById("delete-usr").addEventListener("click", deleteUser);
     document.getElementById("create-task").addEventListener("click", () => {
         document.getElementById("new-task").style.display = "block";
