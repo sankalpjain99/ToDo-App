@@ -39,10 +39,9 @@ logoutUser = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + window.localStorage.getItem('token')
             }
-        }).then((res) => res.json())
-        .then((data) => {
-            console.log(data);
+        }).then((res) => {
             window.localStorage.removeItem('token');
             window.location.href = "../index.html";
         })
