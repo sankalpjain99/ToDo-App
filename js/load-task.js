@@ -25,9 +25,26 @@ loadTasks = () => {
         var tasks = data;
         tasks.forEach(element => {
             var newElement = document.createElement('div');
+            var content = document.createElement('span');
+            var updateBtn = document.createElement('button');
+            var delBtn = document.createElement('button');
+
+            content.className = "task-desc-span";
+            content.textContent = element.description;
+
+            delBtn.className = "del-btn";
+            delBtn.textContent = "Delete Task";
+
+            updateBtn.className = "update-btn";
+            updateBtn.textContent = "Edit"
+
             newElement.className = "task";
             newElement.id = element._id;
-            newElement.innerHTML = element.description;
+
+            newElement.appendChild(content);
+            newElement.appendChild(updateBtn);
+            newElement.appendChild(delBtn);
+
             document.getElementById("task-container").appendChild(newElement);
         });
     })
@@ -35,7 +52,10 @@ loadTasks = () => {
 }
 
 logoutUser = (addon="") => {
-    fetch("https://sankalp-task-manager-api.herokuapp.com/users/logout"+addon,{
+    var queryString = "https://sankalp-task-manager-api.herokuapp.com/users/logout"
+    if(addon==="All")
+        queryString += "All"
+    fetch(queryString,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -78,9 +98,26 @@ addTask = () => {
     .then((data) => {
         console.log(data);
         var newElement = document.createElement('div');
+        var content = document.createElement('span');
+        var updateBtn = document.createElement('button');
+        var delBtn = document.createElement('button');
+
+        content.className = "task-desc-span";
+        content.textContent = data.description;
+
+        delBtn.className = "del-btn";
+        delBtn.textContent = "Delete Task";
+
+        updateBtn.className = "update-btn";
+        updateBtn.textContent = "Edit"
+
         newElement.className = "task";
-        newElement.id = data._id;   
-        newElement.innerHTML = data.description;
+        newElement.id = data._id;
+
+        newElement.appendChild(content);
+        newElement.appendChild(updateBtn);
+        newElement.appendChild(delBtn);
+        
         document.getElementById("task-container").appendChild(newElement);
         document.getElementById("new-task").style.display = "none"
     })
