@@ -8,7 +8,7 @@ body{overflow-x: hidden;
 /* ----------------------------------Header --------------------------- */
 
 .header{
-    padding: 5%;
+    padding: 5% 7%;
     display: flex;
 }
 
@@ -19,7 +19,7 @@ body{overflow-x: hidden;
 
 .dropdown{
     position: absolute;
-    right: 5%;
+    right: 7%;
 }
 
 .dropdown-toggle{
@@ -53,7 +53,7 @@ body{overflow-x: hidden;
 /* -------------------Left and Right Box Container ----------------------- */
 
 .row{
-    padding:0 5%;
+    padding:0 7%;
 }
 
 /* ----------------------------------Left Box -------------------------- */
@@ -67,11 +67,98 @@ body{overflow-x: hidden;
     font-weight: 300;
 }
 
+.left-box img{
+    width:40%;
+    position: absolute;
+    bottom: 0;
+    float: left;
+}
+
 /* ------------------------------------Right Box ------------------------------------- */
 
-.right-box img{
-    width:700px;
+#create-task{
+    margin: 0 0 2%;
+    font-size: 2.5rem;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    text-align: right;
+}
+
+/* ----------- For Task List ---------------- */
+
+.task{
+    margin: 0 0 0 auto;
+    width: 80%;
+    background-color:white;
+    border-radius: 20px;
+    padding: 3% 5%;
+    margin-bottom: 3%;
+}
+
+.del-btn{
+    float: right;
+    color: rgb(238, 118, 118);
+    font-size: 1.2rem;
+}
+
+.update-btn{
+    float: right;
+    position: relative;
+    right: 12%;
+    font-size: 1.2rem;
+}
+
+/*----------------- For New Task ------------------ */
+
+#new-task{
+    display: none;
+    background-color:white;
+    border-radius: 20px;
+    width: 20%;
+    padding: 2%;
+    margin: 0;  
     position: absolute;
-    bottom: 250px;
-    right: 200px;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#new-task input{
+    width: 90%;
+    font-size: 1rem;
+    border: none;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+#new-task input:focus{
+    outline: none;
+}
+
+#new-task input:active{
+    outline: none;
+    border: none;
+}
+
+#new-task button{
+    margin-top: 10%;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+#add-task{
+    margin-right: 20px;
+    background-color: #45B649;
+    color: white;
+}
+
+#cancel-task{
+    background-color: rgb(243, 96, 96);
+    color: white;
 }

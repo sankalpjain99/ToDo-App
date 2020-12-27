@@ -1,3 +1,28 @@
+createTaskHTML = (element) =>{
+    var newElement = document.createElement('div');
+    var content = document.createElement('span');
+    var updateBtn = document.createElement('span');
+    var delBtn = document.createElement('span');
+
+    content.className = "task-desc-span";
+    content.textContent = element.description;
+
+    delBtn.className = "del-btn";
+    delBtn.innerHTML = "<i class='fas fa-trash-alt'></i>";
+
+    updateBtn.className = "update-btn";
+    updateBtn.innerHTML = "<i class='fas fa-pen'></i>"
+
+    newElement.className = "task";
+    newElement.id = element._id;
+
+    newElement.appendChild(content);
+    newElement.appendChild(updateBtn);
+    newElement.appendChild(delBtn);
+
+    document.getElementById("task-container").appendChild(newElement);
+}
+
 
 updateName = () => {
     fetch("https://sankalp-task-manager-api.herokuapp.com/users/me",{
@@ -25,28 +50,7 @@ loadTasks = () => {
         console.log(data)
         var tasks = data;
         tasks.forEach(element => {
-            var newElement = document.createElement('div');
-            var content = document.createElement('span');
-            var updateBtn = document.createElement('button');
-            var delBtn = document.createElement('button');
-
-            content.className = "task-desc-span";
-            content.textContent = element.description;
-
-            delBtn.className = "del-btn";
-            delBtn.textContent = "Delete Task";
-
-            updateBtn.className = "update-btn";
-            updateBtn.textContent = "Edit"
-
-            newElement.className = "task";
-            newElement.id = element._id;
-
-            newElement.appendChild(content);
-            newElement.appendChild(updateBtn);
-            newElement.appendChild(delBtn);
-
-            document.getElementById("task-container").appendChild(newElement);
+            createTaskHTML(element);
         });
     })
     .catch((err) => console.log(err))
@@ -87,7 +91,7 @@ deleteUser = () => {
 
 addTask = () => {
     var description = document.getElementById("desc").value;
-    var completed = (document.getElementById("completed").checked)?true:false;
+    var completed = false;
     fetch("https://sankalp-task-manager-api.herokuapp.com/tasks",{
         method: 'POST',
         headers: {
@@ -98,28 +102,7 @@ addTask = () => {
     }).then((res) => res.json())
     .then((data) => {
         console.log(data);
-        var newElement = document.createElement('div');
-        var content = document.createElement('span');
-        var updateBtn = document.createElement('button');
-        var delBtn = document.createElement('button');
-
-        content.className = "task-desc-span";
-        content.textContent = data.description;
-
-        delBtn.className = "del-btn";
-        delBtn.textContent = "Delete Task";
-
-        updateBtn.className = "update-btn";
-        updateBtn.textContent = "Edit"
-
-        newElement.className = "task";
-        newElement.id = data._id;
-
-        newElement.appendChild(content);
-        newElement.appendChild(updateBtn);
-        newElement.appendChild(delBtn);
-        
-        document.getElementById("task-container").appendChild(newElement);
+        createTaskHTML(data);
         document.getElementById("new-task").style.display = "none"
     })
     .catch((err) => console.log(err))    
@@ -136,5 +119,8 @@ window.onload = () => {
     document.getElementById("create-task").addEventListener("click", () => {
         document.getElementById("new-task").style.display = "block";
         document.getElementById("add-task").addEventListener("click", addTask);
+        document.getElementById("cancel-task").addEventListener("click", () => {
+            document.getElementById("new-task").style.display = "none";
+        })
     });
 }

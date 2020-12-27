@@ -31,18 +31,17 @@
     <div class="row">
         <div class="left-box col">
             <h1>Hey, <span class="usr-name"> Anonymous</span></h1>
-            <h3>Here are the things you need to complete</h3><br>
-            <div id="task-container"></div>
-            <br><br>
-            <input type="button" value="Add Task" id="create-task">
-            <!-- <div id="new-task">
-                <br><input type="text" id="desc" placeholder="Task Description.."><br><br>
-                Completed: <input type="checkbox" id="completed"><br><br><br>
-                <input type="button" value="Create Task" id="add-task">
-            </div> -->
+            <h3>Here are the things you need to complete</h3>
+            <img src="./images/todo.svg" alt="ToDo SVG">
         </div>
         <div class="right-box col">
-            <img src="./images/todo.svg" alt="ToDo SVG">
+            <div id="create-task"><i class="fas fa-plus-circle"></i></div>
+            <div id="new-task">
+                <br><input type="text" id="desc" placeholder="Task Description.."><br>
+                <button id="add-task">Add Task</button>
+                <button id="cancel-task">Cancel</button>
+            </div>
+            <div id="task-container"></div>
         </div>
     </div>
     
