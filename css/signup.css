@@ -1,0 +1,98 @@
+body{
+    font-family: 'Spartan', sans-serif;
+    background: #DCE35B;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #45B649, #DCE35B);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #45B649, #DCE35B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.main-box{
+    width: 40%;
+    background-color: white;
+    border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.main-box h1{
+    margin: 15% 0;
+}
+
+.main-box input{
+    font-family: 'Spartan', sans-serif;
+    width: 70%;
+    font-size: 1rem;
+    border: none;
+    margin-bottom: 40px;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+.main-box input:focus{
+    outline: none;
+}
+
+.main-box input:active{
+    outline: none;
+    border: none;
+}
+
+.main-box button{
+    font-family: 'Spartan', sans-serif;
+    width: 70%;
+    margin-bottom: 20%;
+    border: none;
+    padding: 15px 5px;
+    border-radius: 10px; 
+    background-color: rgba(43, 158, 43, 0.781);
+    color: white;
+}
+
+.main-box button:hover{
+    background-color:  rgba(43, 158, 43, 0.616);
+}
+
+.main-box button:focus{
+    outline: none;
+}
+
+@media (max-width: 1200px){
+    .main-box{
+        width: 70%;
+    }
+
+    html{
+        font-size: 20px;
+    }
+
+    .main-box button{
+        margin-top: 5%;
+    }
+}
+
+@media (max-width: 800px){
+    html{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 766px){
+    html{
+        font-size: 10px;
+    }
+
+    .main-box button{
+        margin-top: 0;
+        padding:10px 5px;
+    }
+
+    .main-box input{
+        margin-bottom: 20px;
+    }
+
+}
