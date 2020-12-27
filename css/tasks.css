@@ -1,0 +1,77 @@
+body{overflow-x: hidden;
+    font-family: 'Spartan', sans-serif;
+    background: #DCE35B;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #45B649, #DCE35B);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #45B649, #DCE35B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* ----------------------------------Header --------------------------- */
+
+.header{
+    padding: 5%;
+    display: flex;
+}
+
+.header h3{
+    color: white;
+    font-weight: 300;
+}
+
+.dropdown{
+    position: absolute;
+    right: 5%;
+}
+
+.dropdown-toggle{
+    color: white;  
+    font-size: 1.25rem;
+}
+
+.dropdown-toggle:hover{
+    color: white;
+}
+
+.dropdown-toggle:focus{
+    box-shadow: none;
+}
+
+.dropdown-menu{
+    padding: 40%;
+    border-radius: 20px;
+}
+
+.dropdown-item{
+    font-weight: 500;
+    text-align: right;
+}
+
+.dropdown-item:hover{
+    background-color:white;
+    color: #00000041;
+}
+
+/* -------------------Left and Right Box Container ----------------------- */
+
+.row{
+    padding:0 5%;
+}
+
+/* ----------------------------------Left Box -------------------------- */
+
+.left-box h1{
+    color: white;
+}
+
+.left-box h3{
+    color: white;
+    font-weight: 300;
+}
+
+/* ------------------------------------Right Box ------------------------------------- */
+
+.right-box img{
+    width:700px;
+    position: absolute;
+    bottom: 250px;
+    right: 200px;
+}
