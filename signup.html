@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
+     <!-- Dismissible.JS CSS  -->
+     <link rel="stylesheet" href="./dismissible.js/src/dismissible.css"/>
+     <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
+    <!-- User CSS  -->
     <link rel="stylesheet" href="./css/signup.css">
     <!-- Google Fonts  -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@100;300;400;500;600&display=swap" rel="stylesheet"></head>
 </head>
 <body>
+    <div id="dismissible-container"></div>
     <div class="main-box">
         <h1>Let's Register</h1>
         <div>
@@ -20,6 +25,14 @@
             <button id="signup-btn">Sign Up</button>
         </div>
     </div>
+    <script src="./dismissible.js/src/dismissible.js"></script>
+    <script>
+        function createAlert(text){
+            const container = document.querySelector('#dismissible-container');
+            const dismissible = new Dismissible(container);
+            dismissible.error(text);
+        }
+    </script>
     <script src="./js/signup.js"></script>
 </body>
 </html>

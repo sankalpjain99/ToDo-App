@@ -7,9 +7,9 @@ window.onload = () => {
             var email = document.getElementById("email").value;
             var password = document.getElementById("pass").value;
             if(email==="")
-                return alert("Email is Required");
+                return createAlert("Email is Required");
             if(password==="")
-                return alert("Password is Required");   
+                return createAlert("Password is Required");
             fetch("https://sankalp-task-manager-api.herokuapp.com/users/login",{
                 method: 'POST',
                 headers: {
@@ -27,7 +27,7 @@ window.onload = () => {
                 window.localStorage.setItem('token', data.token);
                 window.location.href = "./tasks.html"
             })
-            .catch((err) => alert(err))
+            .catch((err) => createAlert(err))
         })
 
         document.getElementById("sign-btn").addEventListener("click", () => {

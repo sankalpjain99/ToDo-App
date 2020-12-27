@@ -19,5 +19,5 @@ document.getElementById("signup-btn").addEventListener("click", () => {
             window.location.href = "./tasks.html";
         }
     })
-    .catch((err) => alert(err))
+    .catch((err) => createAlert(err))
 })
