@@ -50,6 +50,14 @@ body{overflow-x: hidden;
     color: #00000041;
 }
 
+#delete-usr{
+    color: rgb(224, 77, 77);
+}
+
+#delete-usr:hover{
+    color: rgba(224, 77, 77, 0.335);
+}
+
 /* -------------------Left and Right Box Container ----------------------- */
 
 .row{

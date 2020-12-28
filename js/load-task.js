@@ -208,6 +208,9 @@ window.onload = () => {
     document.getElementById("logout-all").addEventListener("click", ()=>{
         logoutUser("All");
     });
+    document.getElementById("update-usr").addEventListener("click", () => {
+        window.location.href = "../profile.html";
+    })
     document.getElementById("delete-usr").addEventListener("click", deleteUser);
 
     // For new Tasks 
