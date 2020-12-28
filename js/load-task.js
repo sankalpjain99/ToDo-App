@@ -152,7 +152,7 @@ window.onload = () => {
         logoutUser("All");
     });
     document.getElementById("delete-usr").addEventListener("click", deleteUser);
-    document.getElementById("create-task").addEventListener("click", () => {
+    document.getElementById("plus-icon").addEventListener("click", () => {
         document.getElementById("new-task").style.display = "block";
         document.getElementsByClassName("wrapper")[0].style.opacity = "0.3";
         document.getElementById("add-task").addEventListener("click", addTask);
