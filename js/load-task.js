@@ -77,7 +77,24 @@ createTaskHTML = (element, toStike) =>{
     delBtn.addEventListener("click", () => {
         delTask(delBtn.parentElement.id);
     })
+    content.addEventListener("click", () => {
+        var currCompleted = content.parentElement.classList.contains("task-comp");
+        hideShowTask(currCompleted, content.parentElement.id);
+        updateTask(content.parentElement.id, "yes", !currCompleted);
+    })
 
+}
+
+hideShowTask = (completed, id) => {
+    var currTaskDiv = document.getElementById(id);
+    if(completed){
+        currTaskDiv.classList.remove("task-comp");
+        currTaskDiv.parentElement.prepend(currTaskDiv);
+    }
+    else{
+        currTaskDiv.classList.add("task-comp");
+        currTaskDiv.parentElement.append(currTaskDiv);
+    }
 }
 
 // Function to Load Tasks in page 
@@ -125,23 +142,39 @@ addTask = () => {
 }
 
 // Function to Update Task 
-updateTask = (id) => {
-    document.getElementById("task-desc-update").addEventListener("click", () =>{
-        var new_desc = document.getElementById("new-desc").value;
-        fetch("https://sankalp-task-manager-api.herokuapp.com/tasks/"+id,{
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + window.localStorage.getItem('token')
-            },
-            body: JSON.stringify({description: new_desc})
-        }).then((res) => res.json())
-        .then((data) => {
-            document.getElementById("update-task").style.display = "none";
-            document.getElementById(id).childNodes[0].textContent = new_desc;
+updateTask = (id, byCompleted="", completed=false) => {
+    if(byCompleted===""){
+        document.getElementById("task-desc-update").addEventListener("click", () =>{
+            var new_desc = document.getElementById("new-desc").value;
+            fetch("https://sankalp-task-manager-api.herokuapp.com/tasks/"+id,{
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+                },
+                body: JSON.stringify({description: new_desc})
+            }).then((res) => res.json())
+            .then((data) => {
+                document.getElementById("update-task").style.display = "none";
+                document.getElementById(id).childNodes[0].textContent = new_desc;
+            })
+            .catch((err) => console.log(err))  
         })
-        .catch((err) => console.log(err))  
-    })
+    }
+    else{
+        fetch("https://sankalp-task-manager-api.herokuapp.com/tasks/"+id,{
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+                },
+                body: JSON.stringify({completed: completed})
+            }).then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((err) => console.log(err))
+    }
 }
 
 // Function to Delete Task 
