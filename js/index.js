@@ -25,6 +25,7 @@ window.onload = () => {
             })
             .then((data) => {
                 window.localStorage.setItem('token', data.token);
+                window.localStorage.setItem('usr-name', data.user.name);
                 window.location.href = "./tasks.html"
             })
             .catch((err) => createAlert(err))

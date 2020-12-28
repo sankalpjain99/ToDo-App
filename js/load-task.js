@@ -1,21 +1,5 @@
 // ********************************User Functions******************************** 
 
-
-// Function to Update User Name in frontend 
-updateName = () => {
-    fetch("https://sankalp-task-manager-api.herokuapp.com/users/me",{
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + window.localStorage.getItem('token')
-        }
-    }).then((res) => res.json())
-    .then((data) => {
-        document.getElementsByClassName("usr-name")[0].textContent = " "+data.name;
-    })
-    .catch((err) => console.log(err))
-}
-
 // Function to LogOut User 
 logoutUser = (addon="") => {
     var queryString = "https://sankalp-task-manager-api.herokuapp.com/users/logout"
@@ -29,6 +13,7 @@ logoutUser = (addon="") => {
             }
         }).then((res) => {
             window.localStorage.removeItem('token');
+            window.localStorage.removeItem('usr-name');
             window.location.href = "../index.html";
         })
         .catch((err) => console.log(err))
@@ -46,6 +31,7 @@ deleteUser = () => {
         .then((data) => {
             console.log(data);
             window.localStorage.removeItem('token');
+            window.localStorage.removeItem('usr-name');
             window.location.href = "../index.html";
         })
         .catch((err) => console.log(err))
@@ -153,8 +139,8 @@ delTask = (id) => {
 
 // Onload Function to add Event Listeners 
 window.onload = () => {
-    updateName();
-    loadTasks();    
+    loadTasks();
+    document.getElementsByClassName("usr-name")[0].textContent = " " + window.localStorage.getItem('usr-name');
     document.getElementById("logout").addEventListener("click", logoutUser);
     document.getElementById("logout-all").addEventListener("click", ()=>{
         logoutUser("All");
