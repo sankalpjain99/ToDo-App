@@ -55,13 +55,14 @@ deleteUser = () => {
 // ********************************Task Functions******************************** 
 
 // Function to Creat DIV element for task in DOM 
-createTaskHTML = (element) =>{
+createTaskHTML = (element, toStike) =>{
     var newElement = document.createElement('div');
     var content = document.createElement('span');
     var updateBtn = document.createElement('span');
     var delBtn = document.createElement('span');
 
     content.className = "task-desc-span";
+    content.style.cursor = "pointer";
     content.textContent = element.description;
 
     delBtn.className = "del-btn";
@@ -76,6 +77,9 @@ createTaskHTML = (element) =>{
     newElement.appendChild(content);
     newElement.appendChild(updateBtn);
     newElement.appendChild(delBtn);
+    if(toStike){
+        newElement.classList.add("task-comp");
+    }
 
     document.getElementById("task-container").prepend(newElement);
     delBtn.addEventListener("click", () => {
@@ -97,7 +101,12 @@ loadTasks = () => {
         console.log(data)
         var tasks = data;
         tasks.forEach(element => {
-            createTaskHTML(element);
+            if(element.completed)
+                createTaskHTML(element, element.completed);
+        });
+        tasks.forEach(element => {
+            if(!(element.completed))
+                createTaskHTML(element, element.completed);
         });
     })
     .catch((err) => console.log(err))
@@ -116,7 +125,6 @@ addTask = () => {
         body: JSON.stringify({description: description, completed: completed})
     }).then((res) => res.json())
     .then((data) => {
-        console.log(data);
         createTaskHTML(data);
         document.getElementById("new-task").style.display = "none";
         document.getElementsByClassName("wrapper")[0].style.opacity = "1";
