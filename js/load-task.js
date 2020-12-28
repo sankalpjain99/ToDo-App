@@ -77,7 +77,7 @@ createTaskHTML = (element) =>{
     newElement.appendChild(updateBtn);
     newElement.appendChild(delBtn);
 
-    document.getElementById("task-container").appendChild(newElement);
+    document.getElementById("task-container").prepend(newElement);
     delBtn.addEventListener("click", () => {
         delTask(delBtn.parentElement.id);
     })
