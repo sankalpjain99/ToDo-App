@@ -134,11 +134,15 @@ addTask = () => {
         body: JSON.stringify({description: description, completed: completed})
     }).then((res) => res.json())
     .then((data) => {
-        createTaskHTML(data);
-        document.getElementById("new-task").style.display = "none";
-        document.getElementsByClassName("wrapper")[0].style.opacity = "1";
+        if(data.errors){
+            throw new Error(data.message.split(":").pop());
+        }else{
+            createTaskHTML(data);
+            document.getElementById("new-task").style.display = "none";
+            document.getElementsByClassName("wrapper")[0].style.opacity = "1";
+        }
     })
-    .catch((err) => console.log(err))    
+    .catch((err) => createAlert(err))    
 }
 
 // Function to Update Task 
