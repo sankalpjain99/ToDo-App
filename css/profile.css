@@ -1,0 +1,129 @@
+body{
+    font-family: 'Spartan', sans-serif;
+    background: #DCE35B;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #45B649, #DCE35B);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #45B649, #DCE35B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+}
+
+.main-box{
+    width: 40%;
+    background-color: white;
+    border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 5%;
+    display: flex;
+}
+
+img{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.main-box h1{
+    font-weight: 500;
+    font-size: 2.5rem;
+}
+
+.box{
+    width: 50%;
+}
+
+.label, .value{
+    font-size: 1rem;
+}
+
+.label{
+    font-weight: 500;
+}
+
+#edit-pfl{
+    font-family: 'Spartan', sans-serif;
+    margin-top: 5%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 3% 8%;
+    border: none;
+    width: 200px;
+    border-radius: 20px;
+    background-color: rgba(43, 158, 43, 0.781);
+    color: white;
+}
+
+#edit-pfl:hover{
+    background-color:rgba(43, 158, 43, 0.616);
+}
+
+#edit-pfl:focus{
+    outline: none;
+}
+
+/* **********************Edit Profile Box ******************************** */
+
+#new-profile{
+    display: none;
+    background-color:white;
+    border-radius: 20px;
+    width: 20%;
+    padding: 2%;
+    margin: 0;  
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#new-profile input{
+    font-family: 'Spartan', sans-serif;
+    width: 90%;
+    font-size: 1rem;
+    border: none;
+    margin: 5% 0;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+#new-profile input:focus{
+    outline: none;
+}
+
+#new-profile input:active{
+    outline: none;
+    border: none;
+}
+
+#new-profile button{
+    font-family: 'Spartan', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 10%;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+#upd-btn{
+    background-color: rgba(43, 158, 43, 0.781);
+}
+
+#upd-btn:hover{
+    background-color:rgba(43, 158, 43, 0.616);
+}
+
+#cancel-btn{
+    background-color: rgb(233, 92, 92);
+}
+
+#cancel-btn:hover{
+    background-color: rgba(233, 92, 92, 0.685);
+}

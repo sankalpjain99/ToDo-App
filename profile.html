@@ -3,9 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>User Profile</title>
+    <!-- User CSS  -->
+    <link rel="stylesheet" href="./css/profile.css">
+    <!-- Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@100;300;400;500;600&display=swap" rel="stylesheet"></head>
 </head>
 <body>
-    <h1>Profile</h1>
+    <div class="wrapper">
+        <div class="main-box">
+            <div class="img-box box">
+                <img src="./images/profile.svg" alt="dp">
+            </div>
+            <div class="info-box box">
+                <h1>Sankalp Jain</h1>
+                <span class="label">Age: </span><span class="value" id="age">Not Provided</span><br><br>
+                <span class="label">Email: </span><span class="value" id="email"></span><br><br><br>
+                <button id="edit-pfl">Edit Profile</button>
+            </div>
+        </div>
+    </div>
+    <div id="new-profile">
+        <input type="text" placeholder="Name" id="new-name"><br>
+        <input type="text" placeholder="Age" id="new-age"><br>
+        <input type="email" placeholder="Email" id="new-email"><br>
+        <input type="password" placeholder="Password" id="pass"><br>
+        <input type="password" placeholder="ReEnter Password" id="re-pass"><br>
+        <button id="upd-btn">Update Profile</button>
+        <button id="cancel-btn">Cancel</button>
+    </div>
+    <script src="./js/profile.js"></script>
 </body>
 </html>
