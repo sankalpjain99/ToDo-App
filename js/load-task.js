@@ -1,3 +1,60 @@
+// ********************************User Functions******************************** 
+
+
+// Function to Update User Name in frontend 
+updateName = () => {
+    fetch("https://sankalp-task-manager-api.herokuapp.com/users/me",{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+        }
+    }).then((res) => res.json())
+    .then((data) => {
+        document.getElementsByClassName("usr-name")[0].textContent = " "+data.name;
+    })
+    .catch((err) => console.log(err))
+}
+
+// Function to LogOut User 
+logoutUser = (addon="") => {
+    var queryString = "https://sankalp-task-manager-api.herokuapp.com/users/logout"
+    if(addon==="All")
+        queryString += "All"
+    fetch(queryString,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+            }
+        }).then((res) => {
+            window.localStorage.removeItem('token');
+            window.location.href = "../index.html";
+        })
+        .catch((err) => console.log(err))
+}
+
+// Function to Delete User 
+deleteUser = () => {
+    fetch("https://sankalp-task-manager-api.herokuapp.com/users/me",{
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+            }
+        }).then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            window.localStorage.removeItem('token');
+            window.location.href = "../index.html";
+        })
+        .catch((err) => console.log(err))
+}
+
+
+// ********************************Task Functions******************************** 
+
+// Function to Creat DIV element for task in DOM 
 createTaskHTML = (element) =>{
     var newElement = document.createElement('div');
     var content = document.createElement('span');
@@ -21,23 +78,13 @@ createTaskHTML = (element) =>{
     newElement.appendChild(delBtn);
 
     document.getElementById("task-container").appendChild(newElement);
-}
-
-
-updateName = () => {
-    fetch("https://sankalp-task-manager-api.herokuapp.com/users/me",{
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + window.localStorage.getItem('token')
-        }
-    }).then((res) => res.json())
-    .then((data) => {
-        document.getElementsByClassName("usr-name")[0].textContent = " "+data.name;
+    delBtn.addEventListener("click", () => {
+        delTask(delBtn.parentElement.id);
     })
-    .catch((err) => console.log(err))
+
 }
 
+// Function to Load Tasks in page 
 loadTasks = () => {
     fetch("https://sankalp-task-manager-api.herokuapp.com/tasks",{
         method: 'GET',
@@ -56,39 +103,7 @@ loadTasks = () => {
     .catch((err) => console.log(err))
 }
 
-logoutUser = (addon="") => {
-    var queryString = "https://sankalp-task-manager-api.herokuapp.com/users/logout"
-    if(addon==="All")
-        queryString += "All"
-    fetch(queryString,{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + window.localStorage.getItem('token')
-            }
-        }).then((res) => {
-            window.localStorage.removeItem('token');
-            window.location.href = "../index.html";
-        })
-        .catch((err) => console.log(err))
-}
-
-deleteUser = () => {
-    fetch("https://sankalp-task-manager-api.herokuapp.com/users/me",{
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + window.localStorage.getItem('token')
-            }
-        }).then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            window.localStorage.removeItem('token');
-            window.location.href = "../index.html";
-        })
-        .catch((err) => console.log(err))
-}
-
+// Function to Add Task 
 addTask = () => {
     var description = document.getElementById("desc").value;
     var completed = false;
@@ -109,6 +124,26 @@ addTask = () => {
     .catch((err) => console.log(err))    
 }
 
+// Function to Delete Task 
+delTask = (id) => {
+    document.getElementById(id).remove();
+    fetch("https://sankalp-task-manager-api.herokuapp.com/tasks/"+id,{
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+            }
+        }).then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((err) => console.log(err))
+}
+
+
+// *****************************************Onload Fuction Calls******************************** 
+
+// Onload Function to add Event Listeners 
 window.onload = () => {
     updateName();
     loadTasks();    
