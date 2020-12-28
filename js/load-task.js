@@ -48,7 +48,6 @@ createTaskHTML = (element, toStike) =>{
     var delBtn = document.createElement('span');
 
     content.className = "task-desc-span";
-    content.style.cursor = "pointer";
     content.textContent = element.description;
 
     delBtn.className = "del-btn";
@@ -58,7 +57,7 @@ createTaskHTML = (element, toStike) =>{
     updateBtn.innerHTML = "<i class='fas fa-pen'></i>"
 
     newElement.className = "task";
-    newElement.id = element._id;
+    newElement.id = element._id;    
 
     newElement.appendChild(content);
     newElement.appendChild(updateBtn);
@@ -68,6 +67,9 @@ createTaskHTML = (element, toStike) =>{
     }
 
     document.getElementById("task-container").prepend(newElement);
+    updateBtn.addEventListener("click",() => {
+        updateTask(updateBtn.parentElement.id);
+    })
     delBtn.addEventListener("click", () => {
         delTask(delBtn.parentElement.id);
     })
@@ -116,6 +118,12 @@ addTask = () => {
         document.getElementsByClassName("wrapper")[0].style.opacity = "1";
     })
     .catch((err) => console.log(err))    
+}
+
+// Function to Update Task 
+updateTask = (id) => {
+    console.log(id);
+    document.getElementById("update-task").style.display = "block";
 }
 
 // Function to Delete Task 

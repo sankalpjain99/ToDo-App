@@ -104,6 +104,10 @@ body{overflow-x: hidden;
     opacity: 0.5;
 }
 
+.task-desc-span{
+    cursor: pointer;
+}
+
 .del-btn{
     float: right;
     color: rgb(238, 118, 118);
@@ -116,11 +120,12 @@ body{overflow-x: hidden;
     position: relative;
     right: 12%;
     font-size: 1.2rem;
+    cursor: pointer;
 }
 
-/*----------------- For New Task ------------------ */
+/*----------------- For New Task and Update Task Box ------------------ */
 
-#new-task{
+.task-modify{
     display: none;
     background-color:white;
     border-radius: 20px;
@@ -135,7 +140,7 @@ body{overflow-x: hidden;
     text-align: center;
 }
 
-#new-task input{
+.task-modify input{
     width: 90%;
     font-size: 1rem;
     border: none;
@@ -145,29 +150,29 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
-#new-task input:focus{
+.task-modify input:focus{
     outline: none;
 }
 
-#new-task input:active{
+.task-modify input:active{
     outline: none;
     border: none;
 }
 
-#new-task button{
+.task-modify button{
     margin-top: 10%;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
 }
 
-#add-task{
+.ok-btn{
     margin-right: 20px;
     background-color: #45B649;
     color: white;
 }
 
-#cancel-task{
+.cancel-btn{
     background-color: rgb(243, 96, 96);
     color: white;
 }
