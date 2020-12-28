@@ -15,34 +15,36 @@
     <script src="https://kit.fontawesome.com/952f560496.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="header">
-        <h3>Tasks Application</h3>
-        <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-user"></i>&nbsp
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu2">
-              <li><button class="dropdown-item" type="button" id="logout">Logout</button></li>
-              <li><button class="dropdown-item" type="button" id="logout-all">Logout from all accounts</button></li>
-              <li><button class="dropdown-item" type="button" id="delete-usr">Delete Profile</button></li>
-            </ul>
+    <div class="wrapper">
+        <div class="header">
+            <h3>Tasks Application</h3>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user"></i>&nbsp
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu2">
+                  <li><button class="dropdown-item" type="button" id="logout">Logout</button></li>
+                  <li><button class="dropdown-item" type="button" id="logout-all">Logout from all accounts</button></li>
+                  <li><button class="dropdown-item" type="button" id="delete-usr">Delete Profile</button></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="left-box col">
+                <h1>Hey, <span class="usr-name"> Anonymous</span></h1>
+                <h3>Here are the things you need to complete</h3>
+                <img src="./images/todo.svg" alt="ToDo SVG">
+            </div>
+            <div class="right-box col">
+                <div id="create-task"><i class="fas fa-plus-circle"></i></div>
+                <div id="task-container"></div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="left-box col">
-            <h1>Hey, <span class="usr-name"> Anonymous</span></h1>
-            <h3>Here are the things you need to complete</h3>
-            <img src="./images/todo.svg" alt="ToDo SVG">
-        </div>
-        <div class="right-box col">
-            <div id="create-task"><i class="fas fa-plus-circle"></i></div>
-            <div id="new-task">
-                <br><input type="text" id="desc" placeholder="Task Description.."><br>
-                <button id="add-task">Add Task</button>
-                <button id="cancel-task">Cancel</button>
-            </div>
-            <div id="task-container"></div>
-        </div>
+    <div id="new-task">
+        <br><input type="text" id="desc" placeholder="Task Description.."><br>
+        <button id="add-task">Add Task</button>
+        <button id="cancel-task">Cancel</button>
     </div>
     
     <!-- BootStrap JS  -->

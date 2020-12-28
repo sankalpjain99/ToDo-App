@@ -103,7 +103,8 @@ addTask = () => {
     .then((data) => {
         console.log(data);
         createTaskHTML(data);
-        document.getElementById("new-task").style.display = "none"
+        document.getElementById("new-task").style.display = "none";
+        document.getElementsByClassName("wrapper")[0].style.opacity = "1";
     })
     .catch((err) => console.log(err))    
 }
@@ -118,9 +119,11 @@ window.onload = () => {
     document.getElementById("delete-usr").addEventListener("click", deleteUser);
     document.getElementById("create-task").addEventListener("click", () => {
         document.getElementById("new-task").style.display = "block";
+        document.getElementsByClassName("wrapper")[0].style.opacity = "0.3";
         document.getElementById("add-task").addEventListener("click", addTask);
         document.getElementById("cancel-task").addEventListener("click", () => {
             document.getElementById("new-task").style.display = "none";
+            document.getElementsByClassName("wrapper")[0].style.opacity = "1";
         })
     });
 }
