@@ -9,7 +9,7 @@ fetchDetails = () => {
         }).then((res) => res.json())
         .then((data) => {
             console.log(data);
-            document.getElementsByTagName("h1").textContent = data.name;
+            document.getElementsByTagName("h1")[0].textContent = data.name;
             if(data.age !== 0)
                 document.getElementById("age").textContent = data.age;
             document.getElementById("email").textContent = data.email;
@@ -22,7 +22,61 @@ fetchDetails = () => {
 }
 
 updateProfile = () => {
+    var currName = document.getElementsByTagName("h1")[0].textContent;
+    var currAge = document.getElementById("age").textContent;
+    var currEmail = document.getElementById("email").textContent;
+    var newName = document.getElementById("new-name").value;
+    var newAge = document.getElementById("new-age").value;
+    var newEmail = document.getElementById("new-email").value;
+    var pass = document.getElementById("pass").value;
+    var rePass = document.getElementById("re-pass").value;
+    var updateObj = {}
+    if(currName !== newName){
+        updateObj.name = newName;
+    }
+    if(currAge !== newAge){
+        updateObj.age = newAge;
+    }
+    if(currEmail !== newEmail){
+        updateObj.email = newEmail;
+    }
+    if(pass!==""){
+        if(pass===rePass){
+            updateObj.password = pass;
+        }else{
+            console.log("Password does not match");
+        }
+    }
+    if(Object.keys(updateObj).length){
 
+        fetch("https://sankalp-task-manager-api.herokuapp.com/users/me",{
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+                },
+                body: JSON.stringify(updateObj)
+            }).then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                Object.keys(updateObj).forEach(key => {
+                    if(key!=="password"){
+                        if(key==="name"){
+                            document.getElementsByTagName("h1")[0].textContent = updateObj[key];
+                        }
+                        else
+                            document.getElementById(key).textContent = updateObj[key];
+                    }
+                })
+                document.getElementById("new-profile").style.display = "none";
+                document.getElementsByClassName("wrapper")[0].style.opacity = "1";
+            })
+            .catch((err) => console.log(err))
+
+    } else{
+        document.getElementById("new-profile").style.display = "none";
+        document.getElementsByClassName("wrapper")[0].style.opacity = "1";
+    }   
 }
 
 
