@@ -11,7 +11,6 @@ document.getElementById("signup-btn").addEventListener("click", () => {
         body: JSON.stringify({name: name, age: age, email: email, password:password})
     }).then((res) => res.json())
     .then((data) => {
-        console.log(data);
         if(data.errors){
             throw new Error(data.message.split(":").pop());
         }
