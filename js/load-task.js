@@ -159,10 +159,14 @@ updateTask = (id, byCompleted="", completed=false) => {
                 body: JSON.stringify({description: new_desc})
             }).then((res) => res.json())
             .then((data) => {
-                document.getElementById("update-task").style.display = "none";
-                document.getElementById(id).childNodes[0].textContent = new_desc;
+                if(data.errors){
+                    throw new Error(data.message.split(":").pop());
+                } else{
+                    document.getElementById("update-task").style.display = "none";
+                    document.getElementById(id).childNodes[0].textContent = new_desc;
+                }
             })
-            .catch((err) => console.log(err))  
+            .catch((err) => createAlert(err))  
         })
     }
     else{
