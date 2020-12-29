@@ -220,7 +220,7 @@ window.onload = () => {
             logoutUser("All");
         });
         document.getElementById("update-usr").addEventListener("click", () => {
-            window.location.href = "../profile.html";
+            window.location.href = "./profile.html";
         })
         document.getElementById("delete-usr").addEventListener("click", deleteUser);
 
