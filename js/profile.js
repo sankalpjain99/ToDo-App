@@ -64,6 +64,7 @@ updateProfile = () => {
                         if(key!=="password"){
                             if(key==="name"){
                                 document.getElementsByTagName("h1")[0].textContent = updateObj[key];
+                                window.localStorage.setItem("usr-name", updateObj[key]);
                             }
                             else
                                 document.getElementById(key).textContent = updateObj[key];
