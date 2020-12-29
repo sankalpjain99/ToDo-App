@@ -11,8 +11,12 @@ document.getElementById("signup-btn").addEventListener("click", () => {
         body: JSON.stringify({name: name, age: age, email: email, password:password})
     }).then((res) => res.json())
     .then((data) => {
+        console.log(data);
         if(data.errors){
             throw new Error(data.message.split(":").pop());
+        }
+        if(data.name && data.name==="MongoError"){
+            throw new Error("This email id already exists in our database");
         }
         else{
             window.localStorage.setItem('token', data.token);
