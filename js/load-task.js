@@ -14,7 +14,7 @@ logoutUser = (addon="") => {
         }).then((res) => {
             window.localStorage.removeItem('token');
             window.localStorage.removeItem('usr-name');
-            window.location.href = "../index.html";
+            window.location.href = "./index.html";
         })
         .catch((err) => console.log(err))
 }
@@ -32,7 +32,7 @@ deleteUser = () => {
             console.log(data);
             window.localStorage.removeItem('token');
             window.localStorage.removeItem('usr-name');
-            window.location.href = "../index.html";
+            window.location.href = "./index.html";
         })
         .catch((err) => console.log(err))
 }
