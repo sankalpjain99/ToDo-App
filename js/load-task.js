@@ -206,29 +206,33 @@ delTask = (id) => {
 
 // Onload Function to add Event Listeners 
 window.onload = () => {
+    if(localStorage.getItem("token")===null){
+        window.location.href = "./index.html"
+    }
+    else{
+        // Load Name and Tasks 
+        loadTasks();
+        document.getElementsByClassName("usr-name")[0].textContent = " " + window.localStorage.getItem('usr-name');
 
-    // Load Name and Tasks 
-    loadTasks();
-    document.getElementsByClassName("usr-name")[0].textContent = " " + window.localStorage.getItem('usr-name');
-
-    // DropDown Options 
-    document.getElementById("logout").addEventListener("click", logoutUser);
-    document.getElementById("logout-all").addEventListener("click", ()=>{
-        logoutUser("All");
-    });
-    document.getElementById("update-usr").addEventListener("click", () => {
-        window.location.href = "../profile.html";
-    })
-    document.getElementById("delete-usr").addEventListener("click", deleteUser);
-
-    // For new Tasks 
-    document.getElementById("plus-icon").addEventListener("click", () => {
-        document.getElementById("new-task").style.display = "block";
-        document.getElementsByClassName("wrapper")[0].style.opacity = "0.3";
-        document.getElementById("add-task").addEventListener("click", addTask);
-        document.getElementById("cancel-task").addEventListener("click", () => {
-            document.getElementById("new-task").style.display = "none";
-            document.getElementsByClassName("wrapper")[0].style.opacity = "1";
+        // DropDown Options 
+        document.getElementById("logout").addEventListener("click", logoutUser);
+        document.getElementById("logout-all").addEventListener("click", ()=>{
+            logoutUser("All");
+        });
+        document.getElementById("update-usr").addEventListener("click", () => {
+            window.location.href = "../profile.html";
         })
-    });
+        document.getElementById("delete-usr").addEventListener("click", deleteUser);
+
+        // For new Tasks 
+        document.getElementById("plus-icon").addEventListener("click", () => {
+            document.getElementById("new-task").style.display = "block";
+            document.getElementsByClassName("wrapper")[0].style.opacity = "0.3";
+            document.getElementById("add-task").addEventListener("click", addTask);
+            document.getElementById("cancel-task").addEventListener("click", () => {
+                document.getElementById("new-task").style.display = "none";
+                document.getElementsByClassName("wrapper")[0].style.opacity = "1";
+            })
+        });
+    }
 }

@@ -84,14 +84,18 @@ updateProfile = () => {
 
 
 window.onload = () => {
-    fetchDetails();
-    document.getElementById("edit-pfl").addEventListener("click",() => {
-        document.getElementById("new-profile").style.display = "block";
-        document.getElementsByClassName("wrapper")[0].style.opacity = "0";
-        document.getElementById("upd-btn").addEventListener("click", updateProfile);
-        document.getElementById("cancel-btn").addEventListener("click", () => {
-            document.getElementById("new-profile").style.display = "none";
-            document.getElementsByClassName("wrapper")[0].style.opacity = "1";
+    if(localStorage.getItem("token")===null){
+        window.location.href = "./index.html"
+    } else{
+        fetchDetails();
+        document.getElementById("edit-pfl").addEventListener("click",() => {
+            document.getElementById("new-profile").style.display = "block";
+            document.getElementsByClassName("wrapper")[0].style.opacity = "0";
+            document.getElementById("upd-btn").addEventListener("click", updateProfile);
+            document.getElementById("cancel-btn").addEventListener("click", () => {
+                document.getElementById("new-profile").style.display = "none";
+                document.getElementsByClassName("wrapper")[0].style.opacity = "1";
+            })
         })
-    })
+    }
 }
