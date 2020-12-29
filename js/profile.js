@@ -8,7 +8,6 @@ fetchDetails = () => {
             }
         }).then((res) => res.json())
         .then((data) => {
-            console.log(data);
             document.getElementsByTagName("h1")[0].textContent = data.name;
             if(data.age !== 0)
                 document.getElementById("age").textContent = data.age;
@@ -44,7 +43,7 @@ updateProfile = () => {
         if(pass===rePass){
             updateObj.password = pass;
         }else{
-            console.log("Password does not match");
+            return createAlert("Password does not match");
         }
     }
     if(Object.keys(updateObj).length){
@@ -58,20 +57,23 @@ updateProfile = () => {
                 body: JSON.stringify(updateObj)
             }).then((res) => res.json())
             .then((data) => {
-                console.log(data);
-                Object.keys(updateObj).forEach(key => {
-                    if(key!=="password"){
-                        if(key==="name"){
-                            document.getElementsByTagName("h1")[0].textContent = updateObj[key];
+                if(data.errors){
+                    throw new Error(data.message.split(":").pop());
+                } else{
+                    Object.keys(updateObj).forEach(key => {
+                        if(key!=="password"){
+                            if(key==="name"){
+                                document.getElementsByTagName("h1")[0].textContent = updateObj[key];
+                            }
+                            else
+                                document.getElementById(key).textContent = updateObj[key];
                         }
-                        else
-                            document.getElementById(key).textContent = updateObj[key];
-                    }
-                })
-                document.getElementById("new-profile").style.display = "none";
-                document.getElementsByClassName("wrapper")[0].style.opacity = "1";
+                    })
+                    document.getElementById("new-profile").style.display = "none";
+                    document.getElementsByClassName("wrapper")[0].style.opacity = "1";
+                }
             })
-            .catch((err) => console.log(err))
+            .catch((err) => createAlert(err))
 
     } else{
         document.getElementById("new-profile").style.display = "none";
