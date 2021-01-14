@@ -1,4 +1,36 @@
+/* *********************PreLoader CSS ********************** */
+.preloader-wrapper {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.brown-circle {
+    width: 70px;
+    height: 70px;
+    border:4px solid white;
+    border-top: 4px solid transparent  ;
+    border-right:4px solid transparent;
+    position:relative;
+    border-radius:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotate 0.5s infinite;
+}
+
+@keyframes rotate {
+    from {}
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* *********************Body CSS ********************** */
+
 body{
+    overflow-y: hidden;
     font-family: 'Spartan', sans-serif;
     background: #DCE35B;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #45B649, #DCE35B);  /* Chrome 10-25, Safari 5.1-6 */

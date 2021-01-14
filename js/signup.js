@@ -1,4 +1,6 @@
 document.getElementById("signup-btn").addEventListener("click", () => {
+    document.getElementsByClassName("main-box")[0].style.display = "none";
+    document.getElementById("preloader").style.display = "flex";
     var name = document.getElementById("name").value;
     var age = document.getElementById("age").value;
     var email = document.getElementById("email").value;
@@ -12,9 +14,13 @@ document.getElementById("signup-btn").addEventListener("click", () => {
     }).then((res) => res.json())
     .then((data) => {
         if(data.errors){
+            document.getElementsByClassName("main-box")[0].style.display = "block";
+            document.getElementById("preloader").style.display = "none";
             throw new Error(data.message.split(":").pop());
         }
         if(data.name && data.name==="MongoError"){
+            document.getElementsByClassName("main-box")[0].style.display = "block";
+            document.getElementById("preloader").style.display = "none";
             throw new Error("This email id already exists in our database");
         }
         else{
