@@ -8,6 +8,8 @@ fetchDetails = () => {
             }
         }).then((res) => res.json())
         .then((data) => {
+            document.getElementById("preloader").style.display = "none";
+            document.getElementsByClassName("main-box")[0].style.display = "flex";
             document.getElementsByTagName("h1")[0].textContent = data.name;
             if(data.age !== 0)
                 document.getElementById("age").textContent = data.age;
