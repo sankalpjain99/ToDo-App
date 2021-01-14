@@ -1,4 +1,6 @@
-body{overflow-x: hidden;
+body{
+    overflow-x: hidden;
+    width: 100%;
     font-family: 'Spartan', sans-serif;
     background: #DCE35B;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #45B649, #DCE35B);  /* Chrome 10-25, Safari 5.1-6 */
@@ -15,6 +17,7 @@ body{overflow-x: hidden;
 .header h3{
     color: white;
     font-weight: 300;
+    font-size: max(2vw, 2.5vh);
 }
 
 .dropdown{
@@ -24,7 +27,7 @@ body{overflow-x: hidden;
 
 .dropdown-toggle{
     color: white;  
-    font-size: 1.25rem;
+    font-size: max(1.5vw, 2vh);
 }
 
 .dropdown-toggle:hover{
@@ -68,11 +71,13 @@ body{overflow-x: hidden;
 
 .left-box h1{
     color: white;
+    font-size: max(2.5vw, 3vh);
 }
 
 .left-box h3{
     color: white;
     font-weight: 300;
+    font-size: max(1.5vw, 2vh);
 }
 
 .left-box img{
@@ -86,7 +91,7 @@ body{overflow-x: hidden;
 
 #create-task{
     margin: 0 0 2%;
-    font-size: 2.5rem;
+    font-size: max(2.5vw, 2.7vh);
     color: white;
     position: relative;
     text-align: right;
@@ -99,12 +104,12 @@ body{overflow-x: hidden;
 /* ----------- For Task List ---------------- */
 
 .task{
-    margin: 0 0 0 auto;
+    margin: 0 0 4% auto;
     width: 80%;
     background-color:white;
-    border-radius: 20px;
-    padding: 3% 5%;
-    margin-bottom: 3%;
+    border-radius: 10px;
+    padding: 4% 5%;
+    line-height: max(1vw, 1.5vh);
 }
 
 .task-comp{
@@ -114,12 +119,13 @@ body{overflow-x: hidden;
 
 .task-desc-span{
     cursor: pointer;
+    font-size: max(1vw, 1.5vh);
 }
 
 .del-btn{
     float: right;
     color: rgb(238, 118, 118);
-    font-size: 1.2rem;
+    font-size: max(1vw, 1.5vh);
     cursor: pointer;
 }
 
@@ -127,7 +133,7 @@ body{overflow-x: hidden;
     float: right;
     position: relative;
     right: 12%;
-    font-size: 1.2rem;
+    font-size: max(1vw, 1.5vh);
     cursor: pointer;
 }
 
@@ -183,4 +189,66 @@ input:-webkit-autofill {
 .cancel-btn{
     background-color: rgb(243, 96, 96);
     color: white;
+}
+
+
+/*********************************** Media Queries *************************** */
+
+@media(max-width: 1200px){
+
+    /* Header  */
+
+    .header{
+        padding: 10% 7%;
+    }
+
+    .header h3{
+        margin-top: 1%;
+    }
+
+    /* Left Box  */
+
+    .left-box img{
+        display: none;
+    }
+
+    /* Right Box  */
+
+    #create-task{
+        text-align: left;
+        margin: 5% 0 2%;
+    }
+
+    .task{
+        margin: 0 0 3% 0;
+        width: 100%;
+        padding: 4% 5%;
+    }
+
+}
+
+@media(max-width: 767px){
+
+    /* Header  */
+
+    .header{
+        padding: 15% 7%;
+    }
+
+    .header h3{
+        margin-top: 2%;
+    }
+
+    /* Right Box  */
+
+    #create-task{
+        margin: 5% 0 5%;
+    }
+
+    .task{
+        margin: 0 0 5% 0;
+        border-radius: 10px;
+        padding: 5%;
+    }
+
 }
