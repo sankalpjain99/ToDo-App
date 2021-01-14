@@ -116,6 +116,8 @@ loadTasks = () => {
         }
     }).then((res) => res.json())
     .then((data) => {
+        document.getElementById("preloader").style.display="none"
+        document.getElementsByClassName("wrapper")[0].style.display = "block";
         console.log(data)
         var tasks = data;
         tasks.forEach(element => {
