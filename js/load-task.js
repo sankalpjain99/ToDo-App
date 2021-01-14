@@ -70,11 +70,13 @@ createTaskHTML = (element, toStike) =>{
 
     // Handle Update Task 
     updateBtn.addEventListener("click",() => {
+        document.getElementsByClassName("wrapper")[0].style.opacity = "0.3";
         document.getElementById("update-task").style.display = "block";
         document.getElementById("task-desc-update").onclick = () => {
             updateTask(updateBtn.parentElement.id);
         }
         document.getElementById("task-desc-cancel").onclick = () => {
+            document.getElementsByClassName("wrapper")[0].style.opacity = "1";
             document.getElementById("update-task").style.display = "none";
         }
     })
@@ -168,6 +170,7 @@ updateTask = (id, byCompleted="", completed=false) => {
             if(data.errors){
                 throw new Error(data.message.split(":").pop());
             } else{
+                document.getElementsByClassName("wrapper")[0].style.opacity = "1";
                 document.getElementById("update-task").style.display = "none";
                 document.getElementById(id).childNodes[0].textContent = new_desc;
             }
