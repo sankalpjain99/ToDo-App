@@ -42,6 +42,10 @@ body{
 }
 
 .dropdown-menu{
+    background: rgba( 255, 255, 255, 0.55 );
+    box-shadow: 0 8px 32px 0 rgba(81, 135, 31, 0.37);
+    backdrop-filter: blur( 7.5px );
+    -webkit-backdrop-filter: blur( 7.5px );
     padding: 40%;
     border-radius: 20px;
 }
@@ -49,19 +53,11 @@ body{
 .dropdown-item{
     font-weight: 500;
     text-align: right;
-}
-
-.dropdown-item:hover{
-    background-color:white;
-    color: #00000041;
+    font-size: max(1.5vh,1vw);
 }
 
 #delete-usr{
     color: rgb(224, 77, 77);
-}
-
-#delete-usr:hover{
-    color: rgba(224, 77, 77, 0.335);
 }
 
 /* -------------------Left and Right Box Container ----------------------- */
