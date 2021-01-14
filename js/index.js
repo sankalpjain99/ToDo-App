@@ -10,6 +10,7 @@ window.onload = () => {
                 return createAlert("Email is Required");
             if(password==="")
                 return createAlert("Password is Required");
+            document.getElementsByClassName("main-box")[0].style.opacity = "0";
             fetch("https://sankalp-task-manager-api.herokuapp.com/users/login",{
                 method: 'POST',
                 headers: {
@@ -18,6 +19,7 @@ window.onload = () => {
                 body: JSON.stringify({email: email, password:password})
             }).then((res) => {
                 if(res.status === 400){
+                    document.getElementsByClassName("main-box")[0].style.opacity = "1";
                     throw new Error("Invalid Email or Password");
                 }else{
                     return res.json();
