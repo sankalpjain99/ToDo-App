@@ -56,6 +56,12 @@ body{
     font-size: max(1.5vh,1vw);
 }
 
+.dropdown-item:focus{
+    background: rgba( 255, 255, 255, 0.55 );
+    outline: none;
+    color: black;
+}
+
 #delete-usr{
     color: rgb(224, 77, 77);
 }
