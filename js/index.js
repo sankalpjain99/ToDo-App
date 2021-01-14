@@ -3,6 +3,7 @@ window.onload = () => {
         window.location.href = "./tasks.html"
     }
     else{
+        document.getElementsByClassName("main-box")[0].style.opacity = "1";
         document.getElementById("login-btn").addEventListener("click" , () => {
             var email = document.getElementById("email").value;
             var password = document.getElementById("pass").value;

@@ -43,7 +43,7 @@ body{
 
 .main-box{
     width: 60%;
-    /* height: 60%; */
+    opacity: 0;
     background-color: white;
     border-radius: 15px;
     padding: 7% 1%;
