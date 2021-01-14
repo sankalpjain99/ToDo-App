@@ -19,14 +19,15 @@ body{
 }
 
 img{
-    width: 250px;
-    height: 250px;
+    width: 80%;
+    height: 80%;
     border-radius: 50%;
+    /* vertical-align: middle; */
 }
 
 .main-box h1{
     font-weight: 500;
-    font-size: 2.5rem;
+    font-size: max(3vh, 2vw);
 }
 
 .box{
@@ -34,7 +35,7 @@ img{
 }
 
 .label, .value{
-    font-size: 1rem;
+    font-size: max(1.9vh, 1vw);
 }
 
 .label{
@@ -43,12 +44,12 @@ img{
 
 #edit-pfl{
     font-family: 'Spartan', sans-serif;
-    margin-top: 5%;
-    font-size: 1.2rem;
+    margin-top: 1%;
+    font-size: max(1.8vh, 1vw);
     cursor: pointer;
     padding: 3% 8%;
     border: none;
-    width: 200px;
+    width: 70%;
     border-radius: 20px;
     background-color: rgba(43, 158, 43, 0.781);
     color: white;
@@ -126,4 +127,41 @@ input:-webkit-autofill {
 
 #cancel-btn:hover{
     background-color: rgba(233, 92, 92, 0.685);
+}
+
+
+/* **********************************Media Query Breakpoints ************************************  */
+
+@media(max-width: 1200px){
+    
+    .main-box{
+        width: 60%;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 10%;
+        padding-bottom: 10%;
+    }
+
+    .box{
+        width: 100%;
+    }
+
+    img{
+        height: 70%;
+        width: 70%;
+        display: block;
+        margin: auto;
+    }
+
+    .info-box{
+        text-align: center;
+        margin-top: 10%;
+    }
+}
+
+@media(max-width: 767px){
+    .main-box{
+        width:70%;
+        padding: 15% 5%;
+    }
 }
