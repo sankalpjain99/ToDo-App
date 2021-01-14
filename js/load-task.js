@@ -59,30 +59,37 @@ createTaskHTML = (element, toStike) =>{
     newElement.className = "task";
     newElement.id = element._id;    
 
+    // Insert New Task 
     newElement.appendChild(content);
     newElement.appendChild(updateBtn);
     newElement.appendChild(delBtn);
     if(toStike){
         newElement.classList.add("task-comp");
     }
-
     document.getElementById("task-container").prepend(newElement);
+
+    // Handle Update Task 
     updateBtn.addEventListener("click",() => {
         document.getElementById("update-task").style.display = "block";
-        document.getElementById("task-desc-cancel").addEventListener("click", () => {
+        document.getElementById("task-desc-update").onclick = () => {
+            updateTask(updateBtn.parentElement.id);
+        }
+        document.getElementById("task-desc-cancel").onclick = () => {
             document.getElementById("update-task").style.display = "none";
-        })
-        updateTask(updateBtn.parentElement.id);
+        }
     })
+
+    // Handle Delete Task 
     delBtn.addEventListener("click", () => {
         delTask(delBtn.parentElement.id);
     })
+
+    // Handle Update Task Status 
     content.addEventListener("click", () => {
         var currCompleted = content.parentElement.classList.contains("task-comp");
         hideShowTask(currCompleted, content.parentElement.id);
         updateTask(content.parentElement.id, "yes", !currCompleted);
     })
-
 }
 
 hideShowTask = (completed, id) => {
@@ -148,26 +155,24 @@ addTask = () => {
 // Function to Update Task 
 updateTask = (id, byCompleted="", completed=false) => {
     if(byCompleted===""){
-        document.getElementById("task-desc-update").addEventListener("click", () =>{
-            var new_desc = document.getElementById("new-desc").value;
-            fetch("https://sankalp-task-manager-api.herokuapp.com/tasks/"+id,{
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + window.localStorage.getItem('token')
-                },
-                body: JSON.stringify({description: new_desc})
-            }).then((res) => res.json())
-            .then((data) => {
-                if(data.errors){
-                    throw new Error(data.message.split(":").pop());
-                } else{
-                    document.getElementById("update-task").style.display = "none";
-                    document.getElementById(id).childNodes[0].textContent = new_desc;
-                }
-            })
-            .catch((err) => createAlert(err))  
+        var new_desc = document.getElementById("new-desc").value;
+        fetch("https://sankalp-task-manager-api.herokuapp.com/tasks/"+id,{
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+            },
+            body: JSON.stringify({description: new_desc})
+        }).then((res) => res.json())
+        .then((data) => {
+            if(data.errors){
+                throw new Error(data.message.split(":").pop());
+            } else{
+                document.getElementById("update-task").style.display = "none";
+                document.getElementById(id).childNodes[0].textContent = new_desc;
+            }
         })
+        .catch((err) => createAlert(err))  
     }
     else{
         fetch("https://sankalp-task-manager-api.herokuapp.com/tasks/"+id,{
